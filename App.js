@@ -15,13 +15,13 @@ export default function App() {
         <Button title='Cultura Transmilenio' onPress={()=> openCulturaTransmilenio}/>
       </View>
 
-      <TouchableOpacity onPress={openUsuariosAhora}> 
+      <TouchableOpacity /*onPress={openUsuariosAhora}*/> 
         <View>
         <Text>Usuarios ahora</Text>
         <Text>Here goes horizontal line</Text>
       </View></TouchableOpacity>
       
-      <TouchableOpacity onPress={openUsuariosHoy}>
+      <TouchableOpacity /*onPress={openUsuariosHoy}*/>
         <View>
         <Text>Usuarios hoy</Text>
         <Text>Here goes resumed picture</Text>
@@ -33,8 +33,8 @@ export default function App() {
       </View>
       <View>
         <Text>¿Cuántas personas van contigo?</Text>
-        <Button title='+' onPress={()=> aumentarAcompañantes}/>
-        <Button title='-' onPress={()=> disminuirAcompañantes}/>
+        <Button title='+' /*onPress={()=> aumentarAcompañantes}*//>
+        <Button title='-' /*onPress={()=> disminuirAcompañantes}*//>
       </View>
     </View>
 
@@ -77,14 +77,14 @@ export default function App() {
         <Text>Here goes received advise</Text>
       </View>
       <View>
-        <Button title='Visita la página de Transmilenio!' onPress={()=> openTransmilenioPage}/>
+        <Button title='Visita la página de Transmilenio!' /*onPress={()=> openTransmilenioPage}*//>
       </View>
-      <TouchableOpacity onPress={openLinkManual}></TouchableOpacity>
+      <TouchableOpacity /*onPress={openLinkManual}*/></TouchableOpacity>
       <View>
         <Text>Here goes image and link to manual</Text>
       </View>
       <View>
-        <Button title="¿Tienes Preguntas?" onPress={() => openCultureLink1}/>
+        <Button title="¿Tienes Preguntas?" /*onPress={() => openCultureLink1}*//>
       </View>
     </View>
 
