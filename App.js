@@ -9,29 +9,33 @@ import ScreenSearchView from './components/ScreenSearchView';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  screen :{
-    flex:1
+  fullScreen :{
+    height:'100%'
   }
 });
 
 class App extends Component {
   render() {
     return (
-      <View>
+      <View style={styles.fullScreen}>
         <View>
           <View>
             <Header title="1 Portal El dorado" subtitle="Universidades-vagón 2"/>
-          <Text>1 Portal El dorado</Text>
-          <Text>Universidades-vagón 2 (test para separar componentes en diferentes archivos)</Text>
-        </View>
+         </View>
           <ScreenMainView/>
         </View>
+      </View>
+    );
+  }
+}
 
+export default App;
+
+        /* 
         <View style={styles.container}>
         <View>
           <Header title="Universidades-vagón 2" subtitle="Ahora"/>
@@ -57,9 +61,4 @@ class App extends Component {
           <Header title="Buscar Ruta"/>
           <ScreenSearchView/>
         </View>
-      </View>
-    );
-  }
-}
-
-export default App;
+        */

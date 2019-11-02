@@ -31,26 +31,31 @@ const ScreenMainView = props => {
 
 const styles = StyleSheet.create({
     usersNow:{
-        flex:2,
-        paddingTop:5
+        height:60,
+        fontSize:18,
+        paddingTop:10
     },
     usersToday:{
-        flex:3,
-        paddingVertical:5
+        height:80,
+        fontSize:18,
+        paddingVertical:40
     },
     busesLeft:{
-        flex:3,
-        paddingEnd:5
+        height:80,
+        fontSize:18,
+        paddingEnd:10
     },
     companions:{
-        flex:2
+        fontSize:18,
+        height:80
     },
     searchService:{
-        flex:2,
+        fontSize:18,
+        height:40,
         paddingVertical:5
     },
     subsubtitle:{
-        fontSize:12,
+        fontSize:18,
         fontFamily: 'serif'
     }
 });
