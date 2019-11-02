@@ -3,9 +3,9 @@ import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
 
 /*Find out how to make touchable arrays*/
 const ScreenTimeView = props => {
-    <View>
+    return(<View>
         <Text>Here goes time display</Text> 
-    </View>
+    </View>);
 };
 
 const styles = StyleSheet.create({

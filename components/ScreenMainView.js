@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, Text, TouchableOpacity, Button} from 'react-native';
 
 const ScreenMainView = props => {
     return(
@@ -31,27 +31,27 @@ const ScreenMainView = props => {
 
 const styles = StyleSheet.create({
     usersNow:{
-        flex=2,
-        paddingTop=5
+        flex:2,
+        paddingTop:5
     },
     usersToday:{
-        flex=3,
-        paddingVertical=5
+        flex:3,
+        paddingVertical:5
     },
     busesLeft:{
-        flex=3,
-        paddingEnd=5
+        flex:3,
+        paddingEnd:5
     },
     companions:{
-        flex=2
+        flex:2
     },
     searchService:{
-        flex=2,
-        paddingVertical=5
+        flex:2,
+        paddingVertical:5
     },
     subsubtitle:{
-        font=12,
-        fontFamily= Cambria
+        fontSize:12,
+        fontFamily: 'serif'
     }
 });
 

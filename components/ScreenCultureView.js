@@ -1,8 +1,8 @@
 import React from 'react';
-import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, Text, TouchableOpacity, Button} from 'react-native';
 
 const ScreenCultureView = props => {
-    <View>
+    return (<View>
         <View>
             <Text>Consejo de hoy:</Text>
             <Text>Here goes received advise</Text>
@@ -21,7 +21,7 @@ const ScreenCultureView = props => {
             <View>
                 <Button title="¿Tienes Preguntas?" /*onPress={() => openCultureLink1}*//>
             </View>     
-    </View>
+    </View>);
 };
 
 const styles = StyleSheet.create({

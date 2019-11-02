@@ -10,16 +10,16 @@ const Header = props => {
 
 const styles = StyleSheet.create({
     theHead:{
-        width='100%',
-        height=90,
-        paddingTop=40,
-        backgroundColor='#ed760e', /* Color naranja algo oscuro para pantalla principal ¿Cómo programo esto?*/
-        alignItems="flex-start",
-        justifyContent="flex-start"
+        width:'100%',
+        height:90,
+        paddingTop:40,
+        backgroundColor:'#ed760e', /* Color naranja algo oscuro para pantalla principal ¿Cómo programo esto?*/
+        alignItems:"flex-start",
+        justifyContent:"flex-start"
     },
     theHeadText:{
-        color='white',
-        font=18
+        color:'white',
+        fontSize:18
     }
 });
 

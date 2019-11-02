@@ -2,7 +2,7 @@ import React from 'react';
 import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
 
 const ScreenStationView = props => {
-    <View>
+    return (<View>
         <TouchableOpacity>
         <View>
             <Text>Here goes interactive picture</Text>
@@ -15,7 +15,7 @@ const ScreenStationView = props => {
         <View>
             <Text>Here goes advise based on time trend</Text>
         </View>
-    </View>
+    </View>);
 };
 
 const styles = StyleSheet.create({
