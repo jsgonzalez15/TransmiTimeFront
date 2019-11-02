@@ -1,41 +1,19 @@
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, TextInput, Button, ScrollView, FlatList, TouchableOpacity } from 'react-native';
-
+import { Header } from './components/Header';
+import { ScreenMainView} from './components/ScreenMainView';
 
 export default function App() {
   return (
     <View>
     /*MAIN VIEW*/
-    <View style={styles.container}>
+    <View style={styles.screen}>
       <View>
+        <Header title="1 Portal El dorado" subtitle="Universidades-vagón 2"/>
         <Text>1 Portal El dorado</Text>
-        <Text>Universidades-vagón 2</Text>
+        <Text>Universidades-vagón 2 (test para separar componentes en diferentes archivos)</Text>
       </View>
-      <View>
-        <Button title='Cultura Transmilenio' onPress={()=> openCulturaTransmilenio}/>
-      </View>
-
-      <TouchableOpacity /*onPress={openUsuariosAhora}*/> 
-        <View>
-        <Text>Usuarios ahora</Text>
-        <Text>Here goes horizontal line</Text>
-      </View></TouchableOpacity>
-      
-      <TouchableOpacity /*onPress={openUsuariosHoy}*/>
-        <View>
-        <Text>Usuarios hoy</Text>
-        <Text>Here goes resumed picture</Text>
-      </View></TouchableOpacity>
-      
-      <View>
-        <Text>Buses a esperar</Text>
-        <Text>Here goes bus interface</Text>
-      </View>
-      <View>
-        <Text>¿Cuántas personas van contigo?</Text>
-        <Button title='+' /*onPress={()=> aumentarAcompañantes}*//>
-        <Button title='-' /*onPress={()=> disminuirAcompañantes}*//>
-      </View>
+      <ScreenMainView/>
     </View>
 
     /*STATION VIEW*/
@@ -106,10 +84,13 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  /*container: {
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
+  },*/
+  screen :{
+    flex:1
+  }
 });
