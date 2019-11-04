@@ -1,15 +1,20 @@
-import React from 'react';
+import React, {useState, Component } from 'react';
 import {View, StyleSheet, Text, TouchableOpacity, Button} from 'react-native';
+import Header from './Header';
+
 
 const ScreenMainView = props => {
     return(
     <View>
-        <TouchableOpacity /*onPress={openUsuariosAhora}*/>
+        <View>
+            <Header title="1 Portal El dorado" subtitle="Universidades-vagón 2"/>
+         </View>
+        <TouchableOpacity /*onPress={() => this.props.navigation.navigate('STATION')}*/>
         <View style={styles.usersNow}>
             <Text style={styles.subsubtitle}>Usuarios ahora:</Text>
         </View>
         </TouchableOpacity>
-        <TouchableOpacity /*onPress={openUsuariosHoy}*/>
+        <TouchableOpacity /*onPress={() => this.props.navigation.navigate('TIME')}*/>
         <View style={styles.usersToday}>
             <Text style={styles.subsubtitle}>Usuarios hoy:</Text>
         </View>
@@ -23,7 +28,7 @@ const ScreenMainView = props => {
             <Button title='-' /*onPress={()=> disminuirAcompañantes}*//>
         </View>
         <View style={styles.searchService}>
-            <Button title='Buscar servicio en Mapa' /*onPress={()=> disminuirAcompañantes}*//>
+            <Button title='Buscar servicio en Mapa' /*onPress={() => this.props.navigation.navigate('SEARCH')}*//>
         </View>
     </View>
     );

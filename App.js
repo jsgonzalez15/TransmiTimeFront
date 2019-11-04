@@ -6,6 +6,8 @@ import ScreenCultureView from './components/ScreenCultureView';
 import ScreenStationView from './components/ScreenStationView';
 import ScreenTimeView from './components/ScreenTimeView';
 import ScreenSearchView from './components/ScreenSearchView';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 
 const styles = StyleSheet.create({
   container: {
@@ -18,47 +20,81 @@ const styles = StyleSheet.create({
   }
 });
 
+/*const [currentScreen, setCurrentScreen] = useState('MAIN_VIEW');
+
+
+let content = <ScreenMainView/>;
+
 class App extends Component {
   render() {
     return (
       <View style={styles.fullScreen}>
-        <View>
-          <View>
-            <Header title="1 Portal El dorado" subtitle="Universidades-vagón 2"/>
-         </View>
-          <ScreenMainView/>
-        </View>
+          {content}
       </View>
     );
   }
 }
 
-export default App;
+export default App;*/
 
-        /* 
-        <View style={styles.container}>
-        <View>
-          <Header title="Universidades-vagón 2" subtitle="Ahora"/>
-            <ScreenStationView/>
-        </View>
-        
-        </View>
 
-        <View style={styles.container}>
-          <View>
-          <Header title="Universidades-vagón 2" subtitle="Hoy"/>
-          <ScreenTimeView/>
-          </View>
-        
-        </View>
 
-        <View style={styles.container}>
-          <Header title="Cultura Transmilenio" subtitle=""/>
-          <ScreenCultureView/>
-        </View>
+class MainScreen extends React.Component {
+  render() {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <ScreenMainView/>
+      </View>
+    );
+  }
+}
 
-        <View style={styles.container}>
-          <Header title="Buscar Ruta"/>
-          <ScreenSearchView/>
-        </View>
-        */
+class StationScreen extends React.Component {
+  render() {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <ScreenStationView/>
+      </View>
+    );
+  }
+}
+
+class TimeScreen extends React.Component {
+  render() {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <ScreenTimeView/>
+      </View>
+    );
+  }
+}
+
+class SearchScreen extends React.Component {
+  render() {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <ScreenSearchView/>
+      </View>
+    );
+  }
+}
+
+class CultureScreen extends React.Component {
+  render() {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <ScreenCultureView/>
+      </View>
+    );
+  }
+}
+
+const RootStack = createStackNavigator({
+  MAIN: MainScreen,
+  STATION: StationScreen,
+  SEARCH: SearchScreen,
+  TIME: TimeScreen,
+  CULTURE: CultureScreen
+});
+
+export default createAppContainer(RootStack);
