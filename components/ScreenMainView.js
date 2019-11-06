@@ -4,21 +4,10 @@ import Header from './Header';
 /*Firebase imports*/
 import firebase from 'firebase';
 
-const [acompañantes, setAcompañantes] = useState(0);
 
-function aumentarAcompañantes() {
-	if (acompañantes < 2) {
-		setAcompañantes(acompañantes + 1)
-	}
-}
-
-function disminuirAcompañantes() {
-	if (acompañantes >= 1) {
-		setAcompañantes(acompañantes - 1)
-	}
-}
 class ScreenMainView extends Component {
 
+	
 	componentWillMount() {
 		var firebaseConfig = {
 			apiKey: "AIzaSyA9HOqxXdnE3bA9GYYk4aN4Wt_dkjGSkco",
@@ -62,16 +51,6 @@ class ScreenMainView extends Component {
 				</TouchableOpacity>
 				<View style={styles.busesLeft}>
 					<Text style={styles.subsubtitle}>Buses a esperar: {TimeNow} Si quieres ir sentado: {TimeSitNow}</Text> 
-				</View>
-				<View style={styles.companions}>
-					<Text style={styles.subsubtitle}>¿Cuántas personas más van contigo? </Text>
-					<View>
-						<Text>{{ acompañantes }}</Text>
-					</View>
-					<View>
-						<Button title='+' onPress={() => aumentarAcompañantes} />
-						<Button title='-' onPress={() => disminuirAcompañantes} />
-					</View>
 				</View>
 				<View style={styles.searchService}>
 					<Button title='Buscar servicio en Mapa' onPress={() => this.props.navigation.navigate('SEARCH')} />
