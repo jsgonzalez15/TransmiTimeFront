@@ -10,16 +10,16 @@ const ScreenCultureView = props => {
         <View>
             <Text> Visita la página de Transmilenio! </Text>
             <TouchableOpacity /*onPress={()=> openTransmilenioPage} https://www.transmilenio.gov.co*/>
-                <Image style={styles.transmiPage} resizemode="contain" source={require('../assets/transmiLink.PNG')} />
+                <Image style={styles.transmiPage} resizemode="contain" source={require('../assets/transmiLink.png')} />
             </TouchableOpacity>
         </View>
         <TouchableOpacity /*onPress={openLinkManual} https://www.transmilenio.gov.co/publicaciones/149132/manual-del-usuario/*/>
             <View>
-                <Image style={styles.manual} resizemode="contain" source={require('../assets/manualTransmi.PNG')} />
+                <Image style={styles.manual} resizemode="contain" source={require('../assets/manualTransmi.png')} />
             </View>
         </TouchableOpacity>
         <View>
-            <Image source={require('../assets/lupaGreen.PNG')} />
+            <Image source={require('../assets/lupaGreen.png')} />
             <Button title="¿Tienes Preguntas?" /*onPress={() => openCultureLink1} https://www.transmilenio.gov.co/preguntas-frecuentes/93/cultura/*/ />
         </View>
     </View>);
