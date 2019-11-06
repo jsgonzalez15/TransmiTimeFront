@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Text, TouchableOpacity, Button} from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, Button } from 'react-native';
 
 const ScreenCultureView = props => {
     return (<View>
@@ -9,23 +9,35 @@ const ScreenCultureView = props => {
         </View>
         <View>
             <Text> Visita la página de Transmilenio! </Text>
-            <TouchableOpacity /*onPress={()=> openTransmilenioPage}*/>
-                <Text>here goes transmilenio image</Text>
+            <TouchableOpacity /*onPress={()=> openTransmilenioPage} https://www.transmilenio.gov.co*/>
+                <Image style={styles.transmiPage} resizemode="contain" source={require('../assets/transmiLink.PNG')} />
             </TouchableOpacity>
         </View>
-        <TouchableOpacity /*onPress={openLinkManual}*/>
+        <TouchableOpacity /*onPress={openLinkManual} https://www.transmilenio.gov.co/publicaciones/149132/manual-del-usuario/*/>
             <View>
-                <Text>Here goes image and link to manual</Text>
-             </View>
+                <Image style={styles.manual} resizemode="contain" source={require('../assets/manualTransmi.PNG')} />
+            </View>
         </TouchableOpacity>
-            <View>
-                <Button title="¿Tienes Preguntas?" /*onPress={() => openCultureLink1}*//>
-            </View>     
+        <View>
+            <Image source={require('../assets/lupaGreen.PNG')} />
+            <Button title="¿Tienes Preguntas?" /*onPress={() => openCultureLink1} https://www.transmilenio.gov.co/preguntas-frecuentes/93/cultura/*/ />
+        </View>
     </View>);
 };
 
 const styles = StyleSheet.create({
-   
+    manual: {
+        width: '80%',
+        height: '100%'
+    },
+    transmiPage: {
+        width: '40%',
+        height: '40%'
+    },
+    theText:{
+        height: 60,
+        fontSize: 18
+    }
 });
 
 export default ScreenCultureView;

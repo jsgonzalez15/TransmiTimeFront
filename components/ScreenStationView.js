@@ -1,19 +1,21 @@
 import React from 'react';
-import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, Text, TouchableOpacity, Image} from 'react-native';
 
+
+//Idea: colocar una imagen de fondo tal y como aparece en fast prototyping y colocar objetos con texto
+//cantidad de personas y estilo en función de ese estilo
 const ScreenStationView = props => {
     return (<View>
         <TouchableOpacity>
         <View>
-            <Text>Here goes interactive picture</Text>
+           
         </View>
         </TouchableOpacity>
-        
          <View>
             <Text>Here goes conventions</Text>
         </View>
         <View>
-            <Text>Here goes advise based on time trend</Text>
+            <Text>Here use props for Culture</Text>
         </View>
     </View>);
 };

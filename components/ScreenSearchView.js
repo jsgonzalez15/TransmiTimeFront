@@ -15,7 +15,14 @@ const ScreenSearchView = props => {
 };
 
 const styles = StyleSheet.create({
-   
+   parrafo:{
+    height: 60,
+    fontSize: 18,
+    backgroundColor:'#ed760e',
+    paddingTop: 10,
+    alignItems:"flex-start",
+    justifyContent:"flex-start"
+   }
 });
 
 export default ScreenSearchView;
