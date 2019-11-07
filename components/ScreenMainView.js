@@ -121,9 +121,9 @@ class ScreenMainView extends Component {
 		return (
 			<ScrollView>
 				<View>
-					<Button title='Cultura Transmilenio' color='#13990D' onPress={() => this.props.navigation.navigate('CULTURE', { advise: adviseStation })} />
+					<Button title='Cultura Transmilenio' color='#13990D' onPress={() => this.props.navigation.navigate('CULTURE', { advise: this.state.culture })} />
 				</View>
-				<TouchableOpacity onPress={() => this.props.navigation.navigate('STATION', { advise: this.state.culture, peopleNowDoor3: this.state.peopleNow })}>
+				<TouchableOpacity onPress={() => this.props.navigation.navigate('STATION', { advise: this.state.adviseStation, peopleNowDoor3: this.state.peopleNow })}>
 					<View style={styles.usersNow}>
 						<Text style={styles.subsubtitle}>Usuarios ahora: {this.props.usersNow}</Text>
 					</View>

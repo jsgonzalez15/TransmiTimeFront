@@ -15,7 +15,8 @@ class ScreenStationView extends Component {
 		};
 
 	render() {
-		return (<View style={StyleSheet.fullScreen}>
+		return (
+		<View style={StyleSheet.fullScreen}>
 			<TouchableOpacity>
 				<ImageBackground source={require('../assets/stationVagon3.png')} style={{width: '100%', height: '100%'}}>
 					<Text>{this.props.peopleNowDoor3}</Text>

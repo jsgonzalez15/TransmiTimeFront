@@ -1,5 +1,5 @@
 import React, { Component} from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, Button, Linking } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, Button, Linking, Image, ScrollView } from 'react-native';
 
 class ScreenCultureView extends Component {
 
@@ -18,19 +18,20 @@ class ScreenCultureView extends Component {
 	//REVISAR COMO OBTENER UN ÚNICO CONSEJO DE consejos (test)
 	//REVISAR ESTILO Y DISTRIBUCIÓN EN RENDERIZACIÓN
 	render() {
+		let advise = this.props.navigation.getParam('advise', []);
 	return (
-    <View style={StyleSheet.fullScreen}>
+    <View >
       <View>
         <Text>Consejo de hoy:</Text>
-        <Text>{this.props.consejos[1]}</Text>
+        <Text>{advise[Math.floor(Math.random()*advise.length)]}</Text>
       </View>
       <View style={StyleSheet.goToHorizontal}>
         <Text> Visita la página de Transmilenio! </Text>
         <TouchableOpacity onPress={()=> Linking.openURL("https://www.transmilenio.gov.co")} >
-          <Image style={styles.transmiPage} resizemode="contain" source={require('../assets/transmiLink.png')} />
+          <Image style={styles.transmiPage} source={require('../assets/transmiLink.png')} />
         </TouchableOpacity>
       </View>
-      <TouchableOpacity onPress={()=> Linking.openURL("https://www.transmilenio.gov.co/publicaciones/149132/manual-del-usuario")}>
+      <TouchableOpacity onPress={()=> Linking.openURL("https://www.transmilenio.gov.co/publicaciones/149132/manual-del-usuario/")}>
         <View>
           <Image style={styles.manual} resizemode="contain" source={require('../assets/manualTransmi.png')} />
         </View>
