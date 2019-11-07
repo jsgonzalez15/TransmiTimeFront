@@ -203,8 +203,8 @@ const styles = StyleSheet.create({
 		paddingVertical: 5
 	},
 	busImage: {
-		width: 100,
-		height: 100
+		width: 30,
+		height: 30
 	},
 	subsubtitle: {
 		fontSize: 18,

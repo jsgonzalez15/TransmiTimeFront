@@ -16,7 +16,7 @@ class ScreenStationView extends Component {
 
 	render() {
 		return (
-		<View style={StyleSheet.fullScreen}>
+		<ScrollView style={StyleSheet.fullScreen}>
 			<TouchableOpacity>
 				<ImageBackground source={require('../assets/stationVagon3.png')} style={{width: '100%', height: '100%'}}>
 					<Text>{this.props.peopleNowDoor3}</Text>
@@ -28,7 +28,7 @@ class ScreenStationView extends Component {
 			<View>
 				<Text>{this.props.advise}</Text>
 			</View>
-		</View>);
+		</ScrollView>);
 	}
 }
 

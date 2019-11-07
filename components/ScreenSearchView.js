@@ -13,7 +13,7 @@ class ScreenSearchView extends Component {
   };
 
   render() {
-    return (<View style={StyleSheet.fullScreen}>
+    return (<ScrollView style={StyleSheet.fullScreen}>
       <View>
       <Image style={styles.transmiMap} resizemode="contain" source={require('../assets/transmiMap.png')} />
       </View>
@@ -21,7 +21,7 @@ class ScreenSearchView extends Component {
         <Text>Tus rutas favoritas:</Text>
         <Text>1 Portal el dorado-Universidades vagón 2</Text>
       </View>
-    </View>);
+    </ScrollView>);
   }
 }
 
