@@ -54,7 +54,7 @@ class ScreenMainView extends Component {
 			console.log(data);
 			this.setState({
 				culture: data
-			});   
+			});
 		});
 		firebase.database().ref('Cultura/Vagón').once('value', (AdviseStationObject) => {
 			//console.log(AdviseStationObject.node_);
@@ -65,7 +65,7 @@ class ScreenMainView extends Component {
 			console.log(data);
 			this.setState({
 				adviseStation: data
-			});   
+			});
 		});
 		// Objeto de usuarios por tiempo obtenidos siempre que sean actualizados
 		firebase.database().ref('DatosPublicosTransmilenio/Ruta1/Puerta3/DatosRegresion').on('value', (PeopleObject) => {
@@ -89,14 +89,14 @@ class ScreenMainView extends Component {
 		firebase.database().ref('DatosPublicosTransmilenio/Ruta1/Puerta3/TiempoDePie').on('value', (TimeNowObject) => {
 			console.log(TimeNowObject.node_.value_);
 			this.setState({
-				timeNow: Object.keys(TimeNowObject)/60
+				timeNow: Object.keys(TimeNowObject)
 			});
 		});
 		// Tiempo de espera a partir de esete momento para ingresar a bus deseado en caso de ir sentado
 		firebase.database().ref('DatosPublicosTransmilenio/Ruta1/Puerta3/TiempoSentado').on('value', (TimeSitNowObject) => {
 			console.log(TimeSitNowObject);
 			this.setState({
-				timeSitNow: Object.keys(TimeSitNowObject)/60
+				timeSitNow: Object.keys(TimeSitNowObject)
 			});
 		});
 		// Buses a esperar a partir de este momento
@@ -117,11 +117,11 @@ class ScreenMainView extends Component {
 
 	//FALTA AVERIGUAR COMO MOSTRAR LA BARRA DE USUARIOS AHORA SEGÚN usersNow
 	render() {
-		
+
 		return (
 			<View>
 				<View>
-					<Button title='Cultura Transmilenio' onPress={() => this.props.navigation.navigate('CULTURE', { advise: adviseStation})}/>
+					<Button title='Cultura Transmilenio' color='#13990D' onPress={() => this.props.navigation.navigate('CULTURE', { advise: adviseStation })} />
 				</View>
 				<TouchableOpacity onPress={() => this.props.navigation.navigate('STATION', { advise: this.state.culture, peopleNowDoor3: this.state.peopleNow })}>
 					<View style={styles.usersNow}>
@@ -133,7 +133,7 @@ class ScreenMainView extends Component {
 						<Text style={styles.subsubtitle}>Usuarios hoy:</Text>
 						<AreaChart
 							style={{ height: 50 }}
-							data={/*this.props.peopleVector*/ []} //el ejemplo es con data
+							data={/*this.props.peopleVector*/[]} //el ejemplo es con data
 							contentInset={{ top: 30, bottom: 30 }}
 							curve={shape.curveNatural}
 							svg={{ fill: '#E56723' }}
@@ -145,16 +145,22 @@ class ScreenMainView extends Component {
 				<View style={styles.busesLeft}>
 					<Text style={styles.subsubtitle}>Buses a esperar:</Text>
 					<View style={styles.imagesTextBusTime}>
-						<Image style={styles.busImage} resizemode="contain" source={require('../assets/bus.png')} />
 						<View>
-							<Text>{this.state.buses} buses</Text>
+							<Image style={styles.busImage} resizemode="contain" source={require('../assets/bus.png')} />
+						</View>
+						<View>
+							<Text>{this.state.buses} buses. Si quieres ir sentado: {this.state.busesSit} buses</Text>
 							<Text>250 usuarios</Text>
 						</View>
 					</View>
-					<View>
-						<Image style={styles.busImage} resizemode="contain" source={require('../assets/clock.png')} />
-						<Text>{this.state.timeNow} +/- 2min </Text>
-						<Text> Si quieres ir sentado: {this.state.timeSitNow} +/- 3min y {this.state.busesSit} buses</Text>
+					<View style={styles.imagesTextBusTime}>
+						<View>
+							<Image style={styles.busImage} resizemode="contain" source={require('../assets/clock.png')} />
+						</View>
+						<View>
+							<Text>{this.state.timeNow} +/- 2min </Text>
+							<Text> Si quieres ir sentado: {this.state.timeSitNow} +/- 3min</Text>
+						</View>
 					</View>
 				</View>
 				<View style={styles.searchService}>
@@ -166,9 +172,9 @@ class ScreenMainView extends Component {
 }
 
 const styles = StyleSheet.create({
-	imagesTextBusTime:{
-		alignItems:"flex-start",
-		justifyContent:"space-around",
+	imagesTextBusTime: {
+		alignItems: "flex-start",
+		justifyContent: "space-around",
 		flexDirection: "row"
 	},
 	usersNow: {
@@ -197,12 +203,17 @@ const styles = StyleSheet.create({
 		paddingVertical: 5
 	},
 	busImage: {
-		width: '10%',
-		height: '10%'
+		width: 100,
+		height: 100
 	},
 	subsubtitle: {
 		fontSize: 18,
 		fontFamily: 'serif'
+	},
+	cultureButton: {
+		flexDirection: "row",
+		justifyContent: "flex-end",
+		width: '100'
 	}
 });
 
