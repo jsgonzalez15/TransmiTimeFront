@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, ScrollView  } from 'react-native';
 import { BarChart, Grid, YAxis } from 'react-native-svg-charts'
 import * as shape from 'd3-shape'
 import * as scale from 'd3-scale'
@@ -27,7 +27,8 @@ class ScreenTimeView extends Component {
       return {value: parseInt(item.split(',')[2]), label: item.split(',')[0]};
     });
 		return (
-      <View style={{ flexDirection: 'row', height: 1500, paddingVertical: 16 }}>
+      <ScrollView>
+      <View style={{ flexDirection: 'row', paddingVertical: 16 }}>
         <YAxis
             data={data1}
             yAccessor={({ index }) => index}
@@ -38,7 +39,7 @@ class ScreenTimeView extends Component {
         />
       
 			<BarChart
-				style={{ flex: 1 }}
+				style={{ flex: 1, height:2000 }}
         data={ data1} //el ejemplo es con data
         horizontal={true}
         yAccessor={ ({ item }) => {return item.value;} }
@@ -50,6 +51,7 @@ class ScreenTimeView extends Component {
 				<Grid direction={Grid.Direction.VERTICAL}/>
 			</BarChart>
 			</View>
+      </ScrollView>
 		)
 	}
 }
