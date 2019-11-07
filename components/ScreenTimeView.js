@@ -1,15 +1,26 @@
 import React from 'react';
-import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 /*Find out how to make touchable arrays*/
-const ScreenTimeView = props => {
-    return(<View>
-        <Text>Here goes time display</Text> 
-    </View>);
+class ScreenTimeView extends Components {
+
+    static navigationOptions = {
+        title: 'Universidades-vagón 2 / Hoy',
+        headerStyle: {
+            backgroundColor: '#E56723',
+          },
+        headerTintColor: '#fff',
+    };
+
+    render() {
+        <View>
+            <Text>this.props.peopleVector</Text>
+        </View>
+    }
 };
 
 const styles = StyleSheet.create({
-   
+
 });
 
 export default ScreenTimeView;

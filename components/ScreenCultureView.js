@@ -1,13 +1,29 @@
 import React from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, Button } from 'react-native';
 
-const ScreenCultureView = props => {
-    return (<View>
+class ScreenCultureView extends Components {
+
+    static navigationOptions = {
+        title: 'Cultura Transmilenio',
+        headerTintColor: '#fff',
+        headerStyle: {
+            backgroundColor: '#13990D',
+		  },
+      };
+      
+    constructor(props) {
+        super(props);
+        
+    }
+    //REVISAR COMO OBTENER UN ÚNICO CONSEJO DE consejos
+    //REVISAR COMO EJECUTAR UN LINK
+    //REVISAR ESTILO Y DISTRIBUCIÓN EN RENDERIZACIÓN
+    render() { <View>
         <View>
             <Text>Consejo de hoy:</Text>
-            <Text>Here goes received advise</Text>
+            <Text>{this.props.consejos}</Text>
         </View>
-        <View>
+        <View style={StyleSheet.goToHorizontal}>
             <Text> Visita la página de Transmilenio! </Text>
             <TouchableOpacity /*onPress={()=> openTransmilenioPage} https://www.transmilenio.gov.co*/>
                 <Image style={styles.transmiPage} resizemode="contain" source={require('../assets/transmiLink.png')} />
@@ -18,11 +34,11 @@ const ScreenCultureView = props => {
                 <Image style={styles.manual} resizemode="contain" source={require('../assets/manualTransmi.png')} />
             </View>
         </TouchableOpacity>
-        <View>
+        <View style={StyleSheet.goToHorizontal}>
             <Image source={require('../assets/lupaGreen.png')} />
             <Button title="¿Tienes Preguntas?" /*onPress={() => openCultureLink1} https://www.transmilenio.gov.co/preguntas-frecuentes/93/cultura/*/ />
         </View>
-    </View>);
+    </View>}
 };
 
 const styles = StyleSheet.create({
@@ -37,6 +53,12 @@ const styles = StyleSheet.create({
     theText:{
         height: 60,
         fontSize: 18
+    },
+    goToHorizontal: {
+        flexDirection: "row",
+        fontSize: 18,
+        alignItems:"flex-start",
+        justifyContent:"flex-start"
     }
 });
 

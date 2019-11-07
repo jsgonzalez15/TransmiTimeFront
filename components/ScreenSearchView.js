@@ -2,16 +2,25 @@ import React from 'react';
 import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
 
 /*Find out how to make touchable arrays*/
-const ScreenSearchView = props => {
-    return (<View>
+class ScreenSearchView extends Components {
+
+  static navigationOptions = {
+    title: 'Buscar Ruta',
+    headerStyle: {
+      backgroundColor: '#ed760e',
+    },
+    headerTintColor: '#fff',
+    };
+    
+    render() {<View>
         <View>
-          <Text>Here goes interactive and expandable map</Text>
+        <Image style={styles.transmiMap} resizemode="contain" source={require('../assets/transmiMap.png')} />
         </View>
         <View>
           <Text>Tus rutas favoritas:</Text>
-          <Text>Here goes favorite list</Text>
+          <Text>1 Portal el dorado-Universidades vagón 2</Text>
         </View>
-    </View>);
+    </View>}
 };
 
 const styles = StyleSheet.create({
@@ -22,7 +31,11 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     alignItems:"flex-start",
     justifyContent:"flex-start"
-   }
+   },
+   transmiMap: {
+    width: '50%',
+    height: '100%'
+},
 });
 
 export default ScreenSearchView;
