@@ -71,13 +71,13 @@ class ScreenMainView extends Component {
 		// Tiempo de espera a partir de este momento para ingresar a bus deseado
 		firebase.database().ref('DatosPublicosTransmilenio/Ruta1/Puerta3/TiempoDePie').on('value', (TimeNowObject) => {
 			this.setState({
-				timeNow: Object.keys(TimeNowObject)
+				timeNow: Object.keys(TimeNowObject)/60
 			});
 		});
 		// Tiempo de espera a partir de esete momento para ingresar a bus deseado en caso de ir sentado
 		firebase.database().ref('DatosPublicosTransmilenio/Ruta1/Puerta3/TiempoSentado').on('value', (TimeSitNowObject) => {
 			this.setState({
-				timeSitNow: Object.keys(TimeSitNowObject)
+				timeSitNow: Object.keys(TimeSitNowObject)/60
 			});
 		});
 		// Buses a esperar a partir de este momento
@@ -122,7 +122,7 @@ class ScreenMainView extends Component {
 				</TouchableOpacity>
 				<View style={styles.busesLeft}>
 					<Text style={styles.subsubtitle}>Buses a esperar:</Text>
-					<View>
+					<View style={styles.imagesTextBusTime}>
 						<Image style={styles.busImage} resizemode="contain" source={require('../assets/bus.png')} />
 						<View>
 							<Text>{this.state.buses} buses</Text>
@@ -144,6 +144,11 @@ class ScreenMainView extends Component {
 }
 
 const styles = StyleSheet.create({
+	imagesTextBusTime:{
+		alignItems:"flex-start",
+		justifyContent:"space-around",
+		flexDirection: "row"
+	},
 	usersNow: {
 		height: 60,
 		fontSize: 18,
@@ -170,8 +175,8 @@ const styles = StyleSheet.create({
 		paddingVertical: 5
 	},
 	busImage: {
-		width: '50%',
-		height: '100%'
+		width: '10%',
+		height: '10%'
 	},
 	subsubtitle: {
 		fontSize: 18,
