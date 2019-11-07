@@ -1,7 +1,6 @@
 import React, {useState, Component } from 'react';
 import { StyleSheet, Text, View, TextInput, Button, ScrollView, FlatList, TouchableOpacity } from 'react-native';
 /*Custom Components import*/
-import Header from './components/Header';
 import ScreenMainView from './components/ScreenMainView';
 import ScreenCultureView from './components/ScreenCultureView';
 import ScreenStationView from './components/ScreenStationView';

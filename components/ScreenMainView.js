@@ -89,14 +89,14 @@ class ScreenMainView extends Component {
 		firebase.database().ref('DatosPublicosTransmilenio/Ruta1/Puerta3/TiempoDePie').on('value', (TimeNowObject) => {
 			console.log(TimeNowObject.node_.value_);
 			this.setState({
-				timeNow: Object.keys(TimeNowObject)/60
+				timeNow: Math.round(TimeNowObject.node_.value_/60)
 			});
 		});
 		// Tiempo de espera a partir de esete momento para ingresar a bus deseado en caso de ir sentado
 		firebase.database().ref('DatosPublicosTransmilenio/Ruta1/Puerta3/TiempoSentado').on('value', (TimeSitNowObject) => {
 			console.log(TimeSitNowObject);
 			this.setState({
-				timeSitNow: Object.keys(TimeSitNowObject)/60
+				timeSitNow: Math.round(TimeSitNowObject.node_.value_/60)
 			});
 		});
 		// Buses a esperar a partir de este momento
