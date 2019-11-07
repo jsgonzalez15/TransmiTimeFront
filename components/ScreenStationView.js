@@ -1,4 +1,4 @@
-import React, { Component}  from 'react';
+import React, { Component } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, ImageBackground, Image } from 'react-native';
 
 
@@ -9,26 +9,24 @@ class ScreenStationView extends Component {
 	static navigationOptions = {
 		title: 'Universidades-vagón 2/ Ahora',
 		headerStyle: {
-		  backgroundColor: '#BC922B',
+			backgroundColor: '#BC922B',
 		},
 		headerTintColor: '#fff',
-		};
+	};
 
 	render() {
 		return (
-		<ScrollView style={StyleSheet.fullScreen}>
-			<TouchableOpacity>
-				<ImageBackground source={require('../assets/stationVagon3.png')} style={{width: '100%', height: '100%'}}>
+			<ScrollView>
+				<ImageBackground source={require('../assets/stationVagon3.png')} style={{ width: '100%', height: '100%' }}>
 					<Text>{this.props.peopleNowDoor3}</Text>
 				</ImageBackground>
-			</TouchableOpacity>
-			<View>
-				<Image style={styles.conventions} resizemode="contain" source={require('../assets/conventions.png')} />
-			</View>
-			<View>
-				<Text>{this.props.advise}</Text>
-			</View>
-		</ScrollView>);
+				<View>
+					<Image style={styles.conventions} resizemode="contain" source={require('../assets/conventions.png')} />
+				</View>
+				<View>
+					<Text>{this.props.advise}</Text>
+				</View>
+			</ScrollView>);
 	}
 }
 

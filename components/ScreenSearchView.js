@@ -35,8 +35,8 @@ const styles = StyleSheet.create({
     justifyContent:"flex-start"
    },
    transmiMap: {
-    width: '100%',
-    height: '100%'
+    width: 200,
+    height: 100
   },
   fullScreen: {
 		flexDirection: "column",
