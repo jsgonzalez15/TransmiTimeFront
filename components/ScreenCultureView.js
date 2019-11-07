@@ -19,7 +19,7 @@ class ScreenCultureView extends Component {
 	//REVISAR ESTILO Y DISTRIBUCIÓN EN RENDERIZACIÓN
 	render() {
 	return (
-    <View>
+    <View style={StyleSheet.fullScreen}>
       <View>
         <Text>Consejo de hoy:</Text>
         <Text>{this.props.consejos[1]}</Text>
@@ -61,6 +61,10 @@ const styles = StyleSheet.create({
 		fontSize: 18,
 		alignItems:"flex-start",
 		justifyContent:"flex-start"
+	},
+	fullScreen: {
+		flexDirection: "column",
+		alignSelf: "stretch",
 	}
 });
 

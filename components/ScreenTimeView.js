@@ -27,7 +27,7 @@ class ScreenTimeView extends Component {
       return {value: parseInt(item.split(',')[2]), label: item.split(',')[0]};
     });
 		return (
-      <ScrollView>
+      <ScrollView style={StyleSheet.fullScreen}>
       <View style={{ flexDirection: 'row', paddingVertical: 16 }}>
         <YAxis
             data={data1}
@@ -57,7 +57,10 @@ class ScreenTimeView extends Component {
 }
 
 const styles = StyleSheet.create({
-
+	fullScreen: {
+		flexDirection: "column",
+		alignSelf: "stretch",
+	}
 });
 
 export default ScreenTimeView;
