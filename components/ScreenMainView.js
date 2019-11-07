@@ -1,4 +1,4 @@
-import React, { useState, Component } from 'react';
+import React, { Component } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, Button } from 'react-native';
 import Header from './Header';
 /*Firebase imports*/
@@ -22,7 +22,10 @@ class ScreenMainView extends Component {
 			time: null,
 			peopleTime: null,
 			timeSitNow: null,
-			culture: null
+			culture: null,
+			buses: null,
+			busesSit: null,
+			adviseStation: null
 		};
 	}
 
@@ -41,51 +44,78 @@ class ScreenMainView extends Component {
 		// Initialize Firebase
 		firebase.initializeApp(firebaseConfig);
 		// Mensajes de cultura y consejos en vagón obtenidos solo al iniciar la aplicación
-		firebase.database().ref('Cultura').once('value', (CulturaObject) => { this.state.culture = CulturaObject });
+		firebase.database().ref('Cultura/Consejos').once('value', (CulturaObject) => {
+			this.setState({
+				culture: Object.keys(CulturaObject)
+			});   
+		});
+		firebase.database().ref('Cultura/Vagón').once('value', (AdviseStationObject) => {
+			this.setState({
+				adviseStation: Object.keys(AdviseStationObject)
+			});   
+		});
 		// Objeto de usuarios por tiempo obtenidos siempre que sean actualizados
 		firebase.database().ref('DatosPublicosTransmilenio/Ruta1/Puerta3/DatosRegresion').on('value', (PeopleObject) => {
 			this.setState({
-				people: PeopleObject
+				people: Object.keys(PeopleObject)
 			});
 		});
 		// Número de personas actual obtenido siempre que sea actualizado
 		firebase.database().ref('DatosPublicosTransmilenio/Ruta1/Puerta3/Personas').on('value', (PeopleNowObject) => {
 			this.setState({
-				peopleNow: PeopleNowObject
+				peopleNow: Object.keys(PeopleNowObject)
 			});
 		});
 		// Tiempo de espera a partir de este momento para ingresar a bus deseado
 		firebase.database().ref('DatosPublicosTransmilenio/Ruta1/Puerta3/TiempoDePie').on('value', (TimeNowObject) => {
 			this.setState({
-				timeNow: TimeNowObject
+				timeNow: Object.keys(TimeNowObject)
 			});
 		});
 		// Tiempo de espera a partir de esete momento para ingresar a bus deseado en caso de ir sentado
 		firebase.database().ref('DatosPublicosTransmilenio/Ruta1/Puerta3/TiempoSentado').on('value', (TimeSitNowObject) => {
 			this.setState({
-				timeSitNow: TimeSitNowObject
+				timeSitNow: Object.keys(TimeSitNowObject)
+			});
+		});
+		// Buses a esperar a partir de este momento
+		firebase.database().ref('DatosPublicosTransmilenio/Ruta1/Puerta3/BusesDePie').on('value', (BusesNowObject) => {
+			this.setState({
+				buses: Object.keys(BusesNowObject)
+			});
+		});
+		// Buses a esperar a partir de este momento si se desea ir sentado
+		firebase.database().ref('DatosPublicosTransmilenio/Ruta1/Puerta3/BusesSentado').on('value', (BusesSitNowObject) => {
+			this.setState({
+				busesSit: Object.keys(BusesSitNowObject)
 			});
 		});
 	}
 
-	//FALTA AGREGAR BOTÓN DE CULTURA (ESTÁ ENTRE VIEWS)
 	//FALTA AVERIGUAR COMO MOSTRAR LA BARRA DE USUARIOS AHORA SEGÚN usersNow
-	//FALTA AVERIGUAR COMO MOSTRAR UN DISPLAY REDUCIDO EN TAMAÑO PARA VECTOR people
-	//ROBERTH CREARÁ UN NÚMERO DE BUSES A ESPERAR QUE TODAVÍA NO ESTÁ EN FIREBASE
 	render() {
 		return (
 			<View>
 				<View>
-					<Header title="1 Portal El dorado" subtitle="Universidades-vagón 2" />
+					<Button title='Cultura Transmilenio' onPress={() => this.props.navigation.navigate('CULTURE', { advise: adviseStation})}/>
 				</View>
-				<TouchableOpacity onPress={() => this.props.navigation.navigate('STATION', { advise: culture, peopleNowDoor3:peopleNow})}>
+				<TouchableOpacity onPress={() => this.props.navigation.navigate('STATION', { advise: culture, peopleNowDoor3: peopleNow })}>
 					<View style={styles.usersNow}>
 						<Text style={styles.subsubtitle}>Usuarios ahora: {this.props.usersNow}</Text>
 					</View>
 				</TouchableOpacity>
 				<TouchableOpacity onPress={() => this.props.navigation.navigate('TIME', { peopleVector: people, })}>
 					<View style={styles.usersToday}>
-						<Text style={styles.subsubtitle}>Usuarios hoy: IMAGE</Text>
+						<Text style={styles.subsubtitle}>Usuarios hoy:</Text>
+						<AreaChart
+							style={{ height: 50 }}
+							data={this.props.peopleVector} //el ejemplo es con data
+							contentInset={{ top: 30, bottom: 30 }}
+							curve={shape.curveNatural}
+							svg={{ fill: '#E56723' }}
+						>
+							<Grid />
+						</AreaChart>
 					</View>
 				</TouchableOpacity>
 				<View style={styles.busesLeft}>
@@ -93,14 +123,14 @@ class ScreenMainView extends Component {
 					<View>
 						<Image style={styles.busImage} resizemode="contain" source={require('../assets/bus.png')} />
 						<View>
-							<Text>x buses</Text>
+							<Text>{buses} buses</Text>
 							<Text>250 usuarios</Text>
 						</View>
 					</View>
 					<View>
 						<Image style={styles.busImage} resizemode="contain" source={require('../assets/clock.png')} />
 						<Text>{timeNow} +/- 2min </Text>
-						<Text> Si quieres ir sentado: {TimeSitNow} +/- 3min</Text>
+						<Text> Si quieres ir sentado: {TimeSitNow} +/- 3min y {busesSit} buses</Text>
 					</View>
 				</View>
 				<View style={styles.searchService}>
