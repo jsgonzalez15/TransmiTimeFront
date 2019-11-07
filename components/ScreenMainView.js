@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, Button } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, Button, Image } from 'react-native';
+import { AreaChart, Grid } from 'react-native-svg-charts';
+import * as shape from 'd3-shape'
 import Header from './Header';
 /*Firebase imports*/
 import firebase from 'firebase';
@@ -99,17 +101,17 @@ class ScreenMainView extends Component {
 				<View>
 					<Button title='Cultura Transmilenio' onPress={() => this.props.navigation.navigate('CULTURE', { advise: adviseStation})}/>
 				</View>
-				<TouchableOpacity onPress={() => this.props.navigation.navigate('STATION', { advise: culture, peopleNowDoor3: peopleNow })}>
+				<TouchableOpacity onPress={() => this.props.navigation.navigate('STATION', { advise: this.state.culture, peopleNowDoor3: this.state.peopleNow })}>
 					<View style={styles.usersNow}>
 						<Text style={styles.subsubtitle}>Usuarios ahora: {this.props.usersNow}</Text>
 					</View>
 				</TouchableOpacity>
-				<TouchableOpacity onPress={() => this.props.navigation.navigate('TIME', { peopleVector: people, })}>
+				<TouchableOpacity onPress={() => this.props.navigation.navigate('TIME', { peopleVector: this.state.people, })}>
 					<View style={styles.usersToday}>
 						<Text style={styles.subsubtitle}>Usuarios hoy:</Text>
 						<AreaChart
 							style={{ height: 50 }}
-							data={this.props.peopleVector} //el ejemplo es con data
+							data={/*this.props.peopleVector*/ []} //el ejemplo es con data
 							contentInset={{ top: 30, bottom: 30 }}
 							curve={shape.curveNatural}
 							svg={{ fill: '#E56723' }}
@@ -123,14 +125,14 @@ class ScreenMainView extends Component {
 					<View>
 						<Image style={styles.busImage} resizemode="contain" source={require('../assets/bus.png')} />
 						<View>
-							<Text>{buses} buses</Text>
+							<Text>{this.state.buses} buses</Text>
 							<Text>250 usuarios</Text>
 						</View>
 					</View>
 					<View>
 						<Image style={styles.busImage} resizemode="contain" source={require('../assets/clock.png')} />
-						<Text>{timeNow} +/- 2min </Text>
-						<Text> Si quieres ir sentado: {TimeSitNow} +/- 3min y {busesSit} buses</Text>
+						<Text>{this.state.timeNow} +/- 2min </Text>
+						<Text> Si quieres ir sentado: {this.state.TimeSitNow} +/- 3min y {this.state.busesSit} buses</Text>
 					</View>
 				</View>
 				<View style={styles.searchService}>

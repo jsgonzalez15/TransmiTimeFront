@@ -18,14 +18,14 @@ class ScreenStationView extends Component {
         <View>
             <TouchableOpacity>
                 <ImageBackground source={require('../assets/stationVagon3.png')} style={{width: '100%', height: '100%'}}>
-                    <Text>this.props.peopleNowDoor3</Text>
+                    <Text>{this.props.peopleNowDoor3}</Text>
                 </ImageBackground>
             </TouchableOpacity>
             <View>
                 <Image style={styles.conventions} resizemode="contain" source={require('../assets/conventions.png')} />
             </View>
             <View>
-                <Text>this.props.advise</Text>
+                <Text>{this.props.advise}</Text>
             </View>
         </View>
     }
