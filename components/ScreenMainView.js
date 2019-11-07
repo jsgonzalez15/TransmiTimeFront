@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, Button, Image } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, Button, Image, ScrollView } from 'react-native';
 import { AreaChart, Grid } from 'react-native-svg-charts';
 import * as shape from 'd3-shape'
 /*Firebase imports*/
@@ -119,7 +119,7 @@ class ScreenMainView extends Component {
 	render() {
 
 		return (
-			<View>
+			<ScrollView>
 				<View>
 					<Button title='Cultura Transmilenio' color='#13990D' onPress={() => this.props.navigation.navigate('CULTURE', { advise: adviseStation })} />
 				</View>
@@ -166,7 +166,7 @@ class ScreenMainView extends Component {
 				<View style={styles.searchService}>
 					<Button title='Buscar servicio en Mapa' onPress={() => this.props.navigation.navigate('SEARCH')} />
 				</View>
-			</View>
+			</ScrollView>
 		);
 	}
 }
@@ -213,7 +213,8 @@ const styles = StyleSheet.create({
 	cultureButton: {
 		flexDirection: "row",
 		justifyContent: "flex-end",
-		width: '100'
+		width: '100',
+		borderRadius:20,
 	}
 });
 
