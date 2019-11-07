@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, Button, Image } from 'react-native';
 import { AreaChart, Grid } from 'react-native-svg-charts';
 import * as shape from 'd3-shape'
-import Header from './Header';
 /*Firebase imports*/
 import firebase from 'firebase';
 
