@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 /*Find out how to make touchable arrays*/
-class ScreenTimeView extends Components {
+class ScreenTimeView extends Component {
 
     static navigationOptions = {
         title: 'Universidades-vagón 2 / Hoy',

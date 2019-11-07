@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, Button } from 'react-native';
 
-class ScreenCultureView extends Components {
+class ScreenCultureView extends Component {
 
     static navigationOptions = {
         title: 'Cultura Transmilenio',
