@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component}  from 'react';
 import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
 
 /*Find out how to make touchable arrays*/
-class ScreenSearchView extends Components {
+class ScreenSearchView extends Component {
 
   static navigationOptions = {
     title: 'Buscar Ruta',

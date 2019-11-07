@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Component}  from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, ImageBackground } from 'react-native';
 
 
 //Idea: colocar una imagen de fondo tal y como aparece en fast prototyping y colocar objetos con texto
 //cantidad de personas y estilo en función de ese estilo
-class ScreenStationView extends Components {
+class ScreenStationView extends Component {
 
     static navigationOptions = {
         title: 'Universidades-vagón 2/ Ahora',

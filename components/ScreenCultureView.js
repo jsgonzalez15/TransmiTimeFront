@@ -1,7 +1,7 @@
-import React from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, Button } from 'react-native';
+import React, { Component} from 'react';
+import { View, StyleSheet, Text, TouchableOpacity, Button, Linking } from 'react-native';
 
-class ScreenCultureView extends Components {
+class ScreenCultureView extends Component {
 
     static navigationOptions = {
         title: 'Cultura Transmilenio',
@@ -15,28 +15,27 @@ class ScreenCultureView extends Components {
         super(props);
         
     }
-    //REVISAR COMO OBTENER UN ÚNICO CONSEJO DE consejos
-    //REVISAR COMO EJECUTAR UN LINK
+    //REVISAR COMO OBTENER UN ÚNICO CONSEJO DE consejos (test)
     //REVISAR ESTILO Y DISTRIBUCIÓN EN RENDERIZACIÓN
     render() { <View>
         <View>
             <Text>Consejo de hoy:</Text>
-            <Text>{this.props.consejos}</Text>
+            <Text>{this.props.consejos[1]}</Text>
         </View>
         <View style={StyleSheet.goToHorizontal}>
             <Text> Visita la página de Transmilenio! </Text>
-            <TouchableOpacity /*onPress={()=> openTransmilenioPage} https://www.transmilenio.gov.co*/>
+            <TouchableOpacity onPress={()=> Linking.openURL("https://www.transmilenio.gov.co")} >
                 <Image style={styles.transmiPage} resizemode="contain" source={require('../assets/transmiLink.png')} />
             </TouchableOpacity>
         </View>
-        <TouchableOpacity /*onPress={openLinkManual} https://www.transmilenio.gov.co/publicaciones/149132/manual-del-usuario/*/>
+        <TouchableOpacity onPress={()=> Linking.openURL("https://www.transmilenio.gov.co/publicaciones/149132/manual-del-usuario")}>
             <View>
                 <Image style={styles.manual} resizemode="contain" source={require('../assets/manualTransmi.png')} />
             </View>
         </TouchableOpacity>
         <View style={StyleSheet.goToHorizontal}>
             <Image source={require('../assets/lupaGreen.png')} />
-            <Button title="¿Tienes Preguntas?" /*onPress={() => openCultureLink1} https://www.transmilenio.gov.co/preguntas-frecuentes/93/cultura/*/ />
+            <Button title="¿Tienes Preguntas?" onPress={() => Linking.openURL("https://www.transmilenio.gov.co/preguntas-frecuentes/93/cultura/")} />
         </View>
     </View>}
 };
