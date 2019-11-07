@@ -45,7 +45,7 @@ class ScreenTimeView extends Component {
 		//this.props.peopleVector.forEach(numero=>peopleArray.push(data[message])); pasar info a vector (creo que este proceso no es necesario, keys debería ser suficiente)
     
 		return (
-      <ScrollView>
+      <ScrollView style={StyleSheet.fullScreen}>
       <View style={{ flexDirection: 'row', paddingVertical: 16 }}>
         <YAxis
             data={this.state.data}
@@ -75,7 +75,10 @@ class ScreenTimeView extends Component {
 }
 
 const styles = StyleSheet.create({
-
+	fullScreen: {
+		flexDirection: "column",
+		alignSelf: "stretch",
+	}
 });
 
 export default ScreenTimeView;

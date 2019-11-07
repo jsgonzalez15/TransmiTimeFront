@@ -13,7 +13,7 @@ class ScreenSearchView extends Component {
   };
 
   render() {
-    return (<View>
+    return (<View style={StyleSheet.fullScreen}>
       <View>
       <Image style={styles.transmiMap} resizemode="contain" source={require('../assets/transmiMap.png')} />
       </View>
@@ -38,6 +38,10 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%'
   },
+  fullScreen: {
+		flexDirection: "column",
+		alignSelf: "stretch",
+	}
 });
 
 export default ScreenSearchView;
