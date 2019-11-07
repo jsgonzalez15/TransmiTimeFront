@@ -1,5 +1,5 @@
 import React, { Component}  from 'react';
-import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, Text, TouchableOpacity, Image} from 'react-native';
 
 /*Find out how to make touchable arrays*/
 class ScreenSearchView extends Component {
@@ -10,18 +10,20 @@ class ScreenSearchView extends Component {
       backgroundColor: '#ed760e',
     },
     headerTintColor: '#fff',
-    };
-    
-    render() {<View>
-        <View>
-        <Image style={styles.transmiMap} resizemode="contain" source={require('../assets/transmiMap.png')} />
-        </View>
-        <View>
-          <Text>Tus rutas favoritas:</Text>
-          <Text>1 Portal el dorado-Universidades vagón 2</Text>
-        </View>
-    </View>}
-};
+  };
+
+  render() {
+    return (<View>
+      <View>
+      <Image style={styles.transmiMap} resizemode="contain" source={require('../assets/transmiMap.png')} />
+      </View>
+      <View>
+        <Text>Tus rutas favoritas:</Text>
+        <Text>1 Portal el dorado-Universidades vagón 2</Text>
+      </View>
+    </View>);
+  }
+}
 
 const styles = StyleSheet.create({
    parrafo:{
@@ -33,9 +35,9 @@ const styles = StyleSheet.create({
     justifyContent:"flex-start"
    },
    transmiMap: {
-    width: '50%',
+    width: '100%',
     height: '100%'
-},
+  },
 });
 
 export default ScreenSearchView;

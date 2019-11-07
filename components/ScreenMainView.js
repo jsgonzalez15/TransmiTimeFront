@@ -47,55 +47,78 @@ class ScreenMainView extends Component {
 		firebase.initializeApp(firebaseConfig);
 		// Mensajes de cultura y consejos en vagón obtenidos solo al iniciar la aplicación
 		firebase.database().ref('Cultura/Consejos').once('value', (CulturaObject) => {
+			//console.log(CulturaObject.node_);
+			let data = [];
+			CulturaObject.forEach(item => {
+				data.push(item.node_.value_);
+			});
+			console.log(data);
 			this.setState({
-				culture: Object.keys(CulturaObject)
+				culture: data
 			});   
 		});
 		firebase.database().ref('Cultura/Vagón').once('value', (AdviseStationObject) => {
+			//console.log(AdviseStationObject.node_);
+			let data = [];
+			AdviseStationObject.forEach(item => {
+				data.push(item.node_.value_);
+			});
+			console.log(data);
 			this.setState({
-				adviseStation: Object.keys(AdviseStationObject)
+				adviseStation: data
 			});   
 		});
 		// Objeto de usuarios por tiempo obtenidos siempre que sean actualizados
 		firebase.database().ref('DatosPublicosTransmilenio/Ruta1/Puerta3/DatosRegresion').on('value', (PeopleObject) => {
+			console.log("prueba");
+			let data = [];
+			PeopleObject.forEach(item => {
+				data.push(item.node_.value_);
+			});
 			this.setState({
-				people: Object.keys(PeopleObject)
+				people: data
 			});
 		});
 		// Número de personas actual obtenido siempre que sea actualizado
 		firebase.database().ref('DatosPublicosTransmilenio/Ruta1/Puerta3/Personas').on('value', (PeopleNowObject) => {
+			console.log(PeopleNowObject.node_.value_);
 			this.setState({
-				peopleNow: Object.keys(PeopleNowObject)
+				peopleNow: PeopleNowObject.node_.value_
 			});
 		});
 		// Tiempo de espera a partir de este momento para ingresar a bus deseado
 		firebase.database().ref('DatosPublicosTransmilenio/Ruta1/Puerta3/TiempoDePie').on('value', (TimeNowObject) => {
+			console.log(TimeNowObject.node_.value_);
 			this.setState({
-				timeNow: Object.keys(TimeNowObject)
+				timeNow: TimeNowObject.node_.value_
 			});
 		});
 		// Tiempo de espera a partir de esete momento para ingresar a bus deseado en caso de ir sentado
 		firebase.database().ref('DatosPublicosTransmilenio/Ruta1/Puerta3/TiempoSentado').on('value', (TimeSitNowObject) => {
+			console.log(TimeSitNowObject);
 			this.setState({
-				timeSitNow: Object.keys(TimeSitNowObject)
+				timeSitNow: TimeSitNowObject.node_.value_
 			});
 		});
 		// Buses a esperar a partir de este momento
 		firebase.database().ref('DatosPublicosTransmilenio/Ruta1/Puerta3/BusesDePie').on('value', (BusesNowObject) => {
+			console.log(BusesNowObject);
 			this.setState({
-				buses: Object.keys(BusesNowObject)
+				buses: BusesNowObject.node_.value_
 			});
 		});
 		// Buses a esperar a partir de este momento si se desea ir sentado
 		firebase.database().ref('DatosPublicosTransmilenio/Ruta1/Puerta3/BusesSentado').on('value', (BusesSitNowObject) => {
+			console.log(BusesSitNowObject);
 			this.setState({
-				busesSit: Object.keys(BusesSitNowObject)
+				busesSit: BusesSitNowObject.node_.value_
 			});
 		});
 	}
 
 	//FALTA AVERIGUAR COMO MOSTRAR LA BARRA DE USUARIOS AHORA SEGÚN usersNow
 	render() {
+		
 		return (
 			<View>
 				<View>
@@ -132,7 +155,7 @@ class ScreenMainView extends Component {
 					<View>
 						<Image style={styles.busImage} resizemode="contain" source={require('../assets/clock.png')} />
 						<Text>{this.state.timeNow} +/- 2min </Text>
-						<Text> Si quieres ir sentado: {this.state.TimeSitNow} +/- 3min y {this.state.busesSit} buses</Text>
+						<Text> Si quieres ir sentado: {this.state.timeSitNow} +/- 3min y {this.state.busesSit} buses</Text>
 					</View>
 				</View>
 				<View style={styles.searchService}>
