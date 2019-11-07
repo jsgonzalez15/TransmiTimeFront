@@ -9,7 +9,10 @@ class ScreenTimeView extends Component {
 
 	constructor (props){
 		super(props)
-		//peopleArray:[]
+		this.state = {
+      data: [],
+      height: 2000
+    };
 	}
 	static navigationOptions = {
 		title: 'Universidades-vagón 2 / Hoy',
@@ -18,29 +21,44 @@ class ScreenTimeView extends Component {
 		},
 		headerTintColor: '#fff',
 	};
-	
+  
+  componentDidMount() {
+    let today = new Date();
+    let minutes = today.getMinutes() + 60 * today.getHours();
+    let data = []
+    this.props.navigation.getParam('peopleVector', []).forEach(item => {
+      let values = item.split(",");
+      if(parseInt(values[2])>minutes) {
+        data.push({value: parseInt(values[2]), label: values[0]});
+      }
+      return ;
+    });
+    let height = Math.min(2000, 15*data.length);
+    console.log(data.length);
+    this.setState({
+      data,
+      height
+    });
+  }
 
 	render() {
 		//this.props.peopleVector.forEach(numero=>peopleArray.push(data[message])); pasar info a vector (creo que este proceso no es necesario, keys debería ser suficiente)
-		const data = [ 50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80 ];
-    let data1 = this.props.navigation.getParam('peopleVector', []).map(item => {
-      return {value: parseInt(item.split(',')[2]), label: item.split(',')[0]};
-    });
+    
 		return (
       <ScrollView>
       <View style={{ flexDirection: 'row', paddingVertical: 16 }}>
         <YAxis
-            data={data1}
+            data={this.state.data}
             yAccessor={({ index }) => index}
             scale={scale.scaleBand}
             contentInset={{ top: 10, bottom: 10 }}
             spacing={0.2}
-            formatLabel={(_, index) => data1[ index ].label}
+            formatLabel={(_, index) => this.state.data[ index ].label}
         />
       
 			<BarChart
 				style={{ flex: 1, height:2000 }}
-        data={ data1} //el ejemplo es con data
+        data={ this.state.data} //el ejemplo es con data
         horizontal={true}
         yAccessor={ ({ item }) => {return item.value;} }
         spacing={0.2}
