@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, ImageBackground, Image } from 'react-native';
+import { View, StyleSheet, Text, ScrollView, ImageBackground, Image } from 'react-native';
 
 
 //Idea: colocar una imagen de fondo tal y como aparece en fast prototyping y colocar objetos con texto
@@ -16,7 +16,7 @@ class ScreenStationView extends Component {
 
 	render() {
 		return (
-			<ScrollView>
+			<View>
 				<ImageBackground source={require('../assets/stationVagon3.png')} style={{ width: '100%', height: '100%' }}>
 					<Text>{this.props.peopleNowDoor3}</Text>
 				</ImageBackground>
@@ -26,14 +26,14 @@ class ScreenStationView extends Component {
 				<View>
 					<Text>{this.props.advise}</Text>
 				</View>
-			</ScrollView>);
+			</View>);
 	}
 }
 
 const styles = StyleSheet.create({
 	conventions: {
-		width: '50%',
-		height: '50%'
+		width: 120,
+		height: 200
 	},
 	fullScreen: {
 		flexDirection: "column",

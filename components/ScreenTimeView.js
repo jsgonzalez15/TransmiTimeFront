@@ -96,7 +96,8 @@ class ScreenTimeView extends Component {
 const styles = StyleSheet.create({
 	fullScreen: {
 		flexDirection: "column",
-		alignSelf: "stretch",
+    alignSelf: "stretch",
+    flex:1
 	}
 });
 

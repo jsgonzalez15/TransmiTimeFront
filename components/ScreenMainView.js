@@ -21,7 +21,7 @@ class ScreenMainView extends Component {
 		this.state = {
 			people: null,
 			time: null,
-			peopleTime: null,
+			peopleNow: null,
 			timeSitNow: null,
 			culture: null,
 			buses: null,
@@ -89,14 +89,14 @@ class ScreenMainView extends Component {
 		firebase.database().ref('DatosPublicosTransmilenio/Ruta1/Puerta3/TiempoDePie').on('value', (TimeNowObject) => {
 			console.log(TimeNowObject.node_.value_);
 			this.setState({
-				timeNow: Object.keys(TimeNowObject)
+				timeNow: Math.round(TimeNowObject.node_.value_/60)
 			});
 		});
 		// Tiempo de espera a partir de esete momento para ingresar a bus deseado en caso de ir sentado
 		firebase.database().ref('DatosPublicosTransmilenio/Ruta1/Puerta3/TiempoSentado').on('value', (TimeSitNowObject) => {
 			console.log(TimeSitNowObject);
 			this.setState({
-				timeSitNow: Object.keys(TimeSitNowObject)
+				timeSitNow: Math.round(TimeSitNowObject.node_.value_/60)
 			});
 		});
 		// Buses a esperar a partir de este momento
@@ -119,13 +119,14 @@ class ScreenMainView extends Component {
 	render() {
 
 		return (
-			<ScrollView>
+			<ScrollView style={styles.fullScreen} scrollEnabled={true}>
 				<View>
 					<Button title='Cultura Transmilenio' color='#13990D' onPress={() => this.props.navigation.navigate('CULTURE', { advise: this.state.culture })} />
 				</View>
 				<TouchableOpacity onPress={() => this.props.navigation.navigate('STATION', { advise: this.state.adviseStation, peopleNowDoor3: this.state.peopleNow })}>
 					<View style={styles.usersNow}>
-						<Text style={styles.subsubtitle}>Usuarios ahora: {this.props.usersNow}</Text>
+						<Text style={styles.subsubtitle}>Usuarios ahora: {this.state.peopleNow} usuario{this.state.peopleNow==1?null : "s"}</Text>
+
 					</View>
 				</TouchableOpacity>
 				<TouchableOpacity onPress={() => this.props.navigation.navigate('TIME', { peopleVector: this.state.people, })}>
@@ -149,8 +150,7 @@ class ScreenMainView extends Component {
 							<Image style={styles.busImage} resizemode="contain" source={require('../assets/bus.png')} />
 						</View>
 						<View>
-							<Text>{this.state.buses} buses. Si quieres ir sentado: {this.state.busesSit} buses</Text>
-							<Text>250 usuarios</Text>
+							<Text>{this.state.buses} buses . Si quieres ir sentado: {this.state.busesSit} buses</Text>
 						</View>
 					</View>
 					<View style={styles.imagesTextBusTime}>
@@ -158,13 +158,25 @@ class ScreenMainView extends Component {
 							<Image style={styles.busImage} resizemode="contain" source={require('../assets/clock.png')} />
 						</View>
 						<View>
-							<Text>{this.state.timeNow} +/- 2min </Text>
-							<Text> Si quieres ir sentado: {this.state.timeSitNow} +/- 3min</Text>
+							<Text>{this.state.timeNow} +/- 2min. Si quieres ir sentado: {this.state.timeSitNow} +/- 3min</Text>
 						</View>
 					</View>
 				</View>
 				<View style={styles.searchService}>
 					<Button title='Buscar servicio en Mapa' onPress={() => this.props.navigation.navigate('SEARCH')} />
+					<Text>TransmiTime es una aplicación que te permite ver cuántas personas se encuentran en este momento en la estación
+						. El número de personas que estarán el resto del día y culturizarte respecto al uso del sistema de Transmilenio. Veamos...
+						hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+						hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+						hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+						hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+						hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+						hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+						hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+						hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+						hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+						hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+					</Text>
 				</View>
 			</ScrollView>
 		);
@@ -176,6 +188,11 @@ const styles = StyleSheet.create({
 		alignItems: "flex-start",
 		justifyContent: "space-around",
 		flexDirection: "row"
+	},
+	fullScreen: {
+		flexDirection: "column",
+		alignSelf: "stretch",
+		flex: 1
 	},
 	usersNow: {
 		height: 60,
@@ -214,7 +231,7 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		justifyContent: "flex-end",
 		width: '100',
-		borderRadius:20,
+		borderRadius: 20,
 	}
 });
 

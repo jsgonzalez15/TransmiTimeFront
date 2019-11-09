@@ -1,5 +1,5 @@
 import React, { Component}  from 'react';
-import {View, StyleSheet, Text, TouchableOpacity, Image} from 'react-native';
+import {View, StyleSheet, Text, TouchableOpacity, Image, ScrollView} from 'react-native';
 
 /*Find out how to make touchable arrays*/
 class ScreenSearchView extends Component {
@@ -35,8 +35,8 @@ const styles = StyleSheet.create({
     justifyContent:"flex-start"
    },
    transmiMap: {
-    width: 200,
-    height: 100
+    width: 400,
+    height: 200
   },
   fullScreen: {
 		flexDirection: "column",
